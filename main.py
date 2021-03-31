@@ -175,10 +175,11 @@ dialogue3_3 = font4.render("\"Now that's done, I'm going to go to the hardware s
 #---------------------------------------
 # Scene 3
 dialogue4 = font5.render("USER GOES TO HARDWARE STORE", True, (WHITE))
-dialogue5_1 = font4.render("\"Let's see... What should we start off with first? Hmmmm...", True, (WHITE))
-dialogue5_2 = font4.render("I also cannot forget that all hardware components must be", True, (WHITE))
-dialogue5_3 = font4.render("compatible with each other. \"", True, (WHITE))
-dialogue5_4 = font4.render("\"I guess I'll start off with the CPU first.\"", True, (WHITE))
+dialogue5_1 = font4.render("\"Let's see... I already planned out my PSU, Case, Keyboard,", True, (WHITE))
+dialogue5_2 = font4.render("Mouse, Monitor and Operating System. The cost for those", True, (WHITE))
+dialogue5_3 = font4.render("components were $1239.00. Now I just need the CPU, GPU,", True, (WHITE))
+dialogue5_4 = font4.render("RAM, Motherboard and SSDs. \"", True, (WHITE))
+dialogue5_5 = font4.render("\"I guess I'll start off with the CPU first.\"", True, (WHITE))
 
 cpu_option1 = font4.render("AMD Ryzen 7 3700X", True, (WHITE))
 cpu_option1_cost = font4.render("COST - $404.15", True, (WHITE))
@@ -425,9 +426,10 @@ while not done:
         screen.blit(dialogue5_1,(110,460))
         screen.blit(dialogue5_2,(110,485))
         screen.blit(dialogue5_3,(110,510))
+        screen.blit(dialogue5_4,(110,535))
       elif show_textopt1 == 12:
         screen.blit(usertext, (usertext_x, 425))
-        screen.blit(dialogue5_4,(110,460))
+        screen.blit(dialogue5_5,(110,460))
       
       # Provide options
       elif show_textopt1 == 13:
@@ -443,7 +445,7 @@ while not done:
             scene = 7
             show_textopt1 += 1
         if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
-            scene = 8
+            scene = 30
             show_textopt2 += 1
 # ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯    
     # Scene 2 (Option 2 Path)
@@ -474,9 +476,10 @@ while not done:
         screen.blit(dialogue5_1,(110,460))
         screen.blit(dialogue5_2,(110,485))
         screen.blit(dialogue5_3,(110,510))
+        screen.blit(dialogue5_4,(110,535))
       elif show_textopt2 == 12:
         screen.blit(usertext, (usertext_x, 425))
-        screen.blit(dialogue5_4,(110,460))
+        screen.blit(dialogue5_5,(110,460))
       
       
       # Provide options
@@ -492,10 +495,10 @@ while not done:
       
         # Check Buttons
         if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
-            scene = 9
+            scene = 7
             show_textopt1 += 1
         if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
-            scene = 10
+            scene = 38
             show_textopt2 += 1
 #------------------------------------------------------    
     # AMD CPU: Picking GPU
@@ -518,7 +521,600 @@ while not done:
         screen.blit(gpu_option1_2,(120,545)) 
         screen.blit(gpu_option1_2cost,(525,545))
 
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 8
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 23
+            show_textopt1 += 1
     
+    # AMD CPU -- NVIDIA GPU (Picking RAM)
+    elif scene == 8:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 16:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue6,(110,460))
+      elif show_textopt1 == 17:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(ram_option1_1,(120,470))
+        screen.blit(ram_option1_1cost,(525,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(ram_option1_2,(120,545)) 
+        screen.blit(ram_option1_2cost,(525,545))
+
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 9
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 16
+            show_textopt1 += 1
+    
+    # AMD CPU -- NVIDIA GPU -- Corsair RAM (Picking Motherboard)
+    elif scene == 9:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 18:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue7,(110,460))
+      
+      elif show_textopt1 == 19:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(motherboard_option1_1,(120,470))
+        screen.blit(ram_option1_1cost,(525,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(motherboard_option1_2,(120,545))
+        screen.blit(motherboard_option1_2cost,(525,545))
+
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 10
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 13
+            show_textopt1 += 1
+
+    # AMD CPU -- NVIDIA GPU -- Corsair RAM -- Asus TUF MOTHERBOARD (Picking SSDs) 
+    elif scene == 10:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 20:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue8,(110,460))
+      
+      elif show_textopt1 == 21:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(ssd_option1_1,(120,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(ssd_option1_2,(120,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 11
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 12
+            show_textopt1 += 1
+
+    # AMD CPU -- NVIDIA GPU -- Corsair RAM -- Asus TUF MOTHERBOARD -- 1TB SSD (FINAL)
+    elif scene == 11:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 22:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+    # AMD CPU -- NVIDIA GPU -- Corsair RAM -- Asus TUF MOTHERBOARD -- 500GB SSD (FINAL)
+    elif scene == 12:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 23:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+    # AMD CPU -- NVIDIA GPU -- Corsair RAM -- MSI MAG MOTHERBOARD (Picking SSDs)
+    elif scene == 13:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 20:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue8,(110,460))
+      
+      elif show_textopt1 == 21:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(ssd_option1_1,(120,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(ssd_option1_2,(120,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 14
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 15
+            show_textopt1 += 1
+
+    # AMD CPU -- NVIDIA GPU -- Corsair RAM -- MSI MAG MOTHERBOARD -- 1TB SSD (FINAL)
+    elif scene == 14:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 22:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+    # AMD CPU -- NVIDIA GPU -- Corsair RAM -- MSI MAG MOTHERBOARD -- 500GB SSD (FINAL)
+    elif scene == 15:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 23:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+    # AMD CPU -- NVIDIA GPU -- G.Skill RAM (PICKING MOTHERBOARD)
+    elif scene == 16:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 18:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue7,(110,460))
+
+      elif show_textopt1 == 19:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(motherboard_option1_1,(120,470))
+        screen.blit(ram_option1_1cost,(525,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(motherboard_option1_3,(120,545))
+        screen.blit(motherboard_option1_3cost,(525,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 17
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 20
+            show_textopt1 += 1
+    
+    # AMD CPU -- NVIDIA GPU -- G.Skill RAM -- Asus TUF MOTHERBOARD (PICKING SSD) 
+    elif scene == 17:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 20:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue8,(110,460))
+      
+      elif show_textopt1 == 21:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(ssd_option1_1,(120,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(ssd_option1_2,(120,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 18
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 19
+            show_textopt1 += 1
+
+    # AMD CPU -- NVIDIA GPU -- G.Skill RAM -- Asus TUF MOTHERBOARD -- 1TB SSD (FINAL)
+    elif scene == 18:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 22:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+    # AMD CPU -- NVIDIA GPU -- G.Skill RAM -- Asus TUF MOTHERBOARD -- 500GB SSD (FINAL) 
+    elif scene == 19:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 23:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+    # AMD CPU -- NVIDIA GPU -- G.Skill RAM -- MSI B550 MOTHERBOARD (PICKING SSD) 
+    elif scene == 20:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 20:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue8,(110,460))
+      
+      elif show_textopt1 == 21:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(ssd_option1_1,(120,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(ssd_option1_2,(120,545))
+
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 21
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 22
+            show_textopt1 += 1
+    # AMD CPU -- NVIDIA GPU -- G.Skill RAM -- MSI B550 MOTHERBOARD -- 1TB SSD (FINAL)
+    elif scene == 21:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 22:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+    # AMD CPU -- NVIDIA GPU -- G.Skill RAM -- MSI B550 MOTHERBOARD -- 500GB SSD (FINAL)
+    elif scene == 22:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 23:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+# ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯
+    # AMD CPU -- Asus GPU (PICKING RAM)
+    elif scene == 23:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 16:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue6,(110,460))
+      elif show_textopt1 == 17:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(ram_option1_1,(120,470))
+        screen.blit(ram_option1_1cost,(525,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(ram_option1_2,(120,545)) 
+        screen.blit(ram_option1_2cost,(525,545))
+
+    # AMD CPU -- Asus GPU -- Corsair RAM (Picking Motherboard)
+    elif scene == 24:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 18:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue7,(110,460))
+
+      elif show_textopt1 == 19:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(motherboard_option1_1,(120,470))
+        screen.blit(ram_option1_1cost,(525,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(motherboard_option1_3,(120,545))
+        screen.blit(motherboard_option1_3cost,(525,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 17
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 20
+            show_textopt1 += 1
+    
+    # AMD CPU -- Asus GPU -- Corsair RAM -- Asus TUF Motherboard (Picking SSD)
+    elif scene == 25:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 20:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue8,(110,460))
+      
+      elif show_textopt1 == 21:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(ssd_option1_1,(120,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(ssd_option1_2,(120,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 18
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 19
+            show_textopt1 += 1
+
+    # AMD CPU -- Asus GPU -- Corsair RAM -- Asus TUF Motherboard -- 1TB SSD (FINAL)
+    elif scene == 26:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 22:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+    
+    # AMD CPU -- Asus GPU -- Corsair RAM -- Asus TUF Motherboard -- 500GB SSD (FINAL)
+    elif scene == 27:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 23:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+    
+    # AMD CPU -- Asus GPU -- Corsair RAM -- MSI MAG Motherboard (Picking SSD)
+    elif scene == 28:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 18:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue7,(110,460))
+
+      elif show_textopt1 == 19:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(motherboard_option1_1,(120,470))
+        screen.blit(ram_option1_1cost,(525,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(motherboard_option1_3,(120,545))
+        screen.blit(motherboard_option1_3cost,(525,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 21
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 22
+            show_textopt1 += 1
+
+    # AMD CPU -- Asus GPU -- Corsair RAM -- MSI MAG Motherboard -- 1TB SSD (FINAL)
+    elif scene == 29:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 22:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+    # AMD CPU -- Asus GPU -- Corsair RAM -- MSI Motherboard -- 500GB SSD (FINAL)  
+    elif scene == 30:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 23:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+    # AMD CPU -- Asus GPU -- G.Skill Trident RAM (Picking Motherboard)
+    elif scene == 31:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 18:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue7,(110,460))
+
+      elif show_textopt1 == 19:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(motherboard_option1_1,(120,470))
+        screen.blit(ram_option1_1cost,(525,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(motherboard_option1_3,(120,545))
+        screen.blit(motherboard_option1_3cost,(525,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 17
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 20
+            show_textopt1 += 1
+    
+    # AMD CPU -- Asus GPU -- G.Skill Trident RAM -- MSI B550-A MOTHEROARD (Picking SSD)
+    elif scene == 32:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 20:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue8,(110,460))
+      
+      elif show_textopt1 == 21:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(ssd_option1_1,(120,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(ssd_option1_2,(120,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 25
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 26
+            show_textopt1 += 1
+
+    # AMD CPU -- Asus GPU -- G.Skill Trident RAM -- MSI B550-A MOTHEROARD -- 1TB SSD (FINAL)
+    elif scene == 33:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 22:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+    
+    # AMD CPU -- Asus GPU -- G.Skill Trident RAM -- MSI B550-A MOTHEROARD -- 500GB SSD (FINAL)
+    elif scene == 34:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 23:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+
+    # AMD CPU -- Asus GPU -- G.Skill Trident RAM -- MSI MAG MOTHEROARD (Picking SSD) 
+    elif scene == 35:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 20:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue8,(110,460))
+      
+      elif show_textopt1 == 21:
+        pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
+        screen.blit(ssd_option1_1,(120,470))
+        pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
+        screen.blit(ssd_option1_2,(120,545))
+        
+        # Check Button
+        if (option1_x <= mouse_click_position[0] and mouse_click_position[0] <= option1_x + option1_width) and (option1_y <= mouse_click_position[1] and mouse_click_position[1] <= option1_y + option1_height):
+            scene = 28
+            show_textopt1 += 1
+        if (option2_x <= mouse_click_position[0] and mouse_click_position[0] <= option2_x + option2_width) and (option2_y <= mouse_click_position[1] and mouse_click_position[1] <= option2_y + option2_height):
+            scene = 29
+            show_textopt1 += 1
+
+    # AMD CPU -- Asus GPU -- G.Skill Trident RAM -- MSI MAG MOTHEROARD -- 1TB SSD (FINAL)
+    elif scene == 36:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 22:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+    
+    # AMD CPU -- Asus GPU -- G.Skill Trident RAM -- MSI MAG MOTHEROARD -- 500GB SSD (FINAL)
+    elif scene == 37:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt1 == 23:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue9,(110,460))
+
+#------------------------------------------------------ 
+    # INTEL CPU
+    elif scene == 38:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt2 == 14:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue5,(110,460))
+    
+    # INTEL CPU
+    elif scene == 31:
+      # Fill background
+      screen.fill(WHITE)
+
+      # Text Box
+      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+
+      if show_textopt2 == 14:
+        screen.blit(usertext, (usertext_x, 425))
+        screen.blit(dialogue5,(110,460))
+
 
 # ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯      
     #else:
