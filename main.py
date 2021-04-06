@@ -26,7 +26,7 @@ display_width  = 800
 display_height = 600
 screen = pygame.display.set_mode((display_width, display_height))
  
-pygame.display.set_caption("<insert title>")
+pygame.display.set_caption("Building My Computer")
 #---------------------------------------
 # ------------- Buttons -------------
 # Start Button 
@@ -77,10 +77,10 @@ q_click_position = [0,0]
 #---------------------------------------
 # --------------- Boxes ---------------
 # Help Box 
-helpbox_x = 100
-helpbox_y = 90
 helpbox_width = 630
 helpbox_height = 450
+helpbox_x = ((display_width/2) -(helpbox_width/2))
+helpbox_y = 90
 
 # Text Box
 textbox_x = 100
@@ -107,62 +107,107 @@ mbstore = pygame.image.load("backgrounds/canada-computer4.jpeg")
 mbstore = pygame.transform.smoothscale(mbstore,  (800, 600))
 #---------------------------------------
 # --------------- Images ---------------
-# Starting Page Images
-test = pygame.image.load("test.jpg")
-test = pygame.transform.smoothscale(test, (350, 250))
+# Characters
+user1 = pygame.image.load("character/Work 2.png")
+user1 = pygame.transform.smoothscale(user1, (400, 533))
+user1_rect = user1.get_rect()
+user1_rect.center = screen.get_rect().center
+user2 = pygame.image.load("character/Work_(smile) 2.png")
+user2 = pygame.transform.smoothscale(user2, (400, 533))
+user2_rect = user2.get_rect()
+user2_rect.center = screen.get_rect().center
+user3 = pygame.image.load("character/casual 2.png")
+user3 = pygame.transform.smoothscale(user3, (400, 533))
+user3_rect = user3.get_rect()
+user3_rect.center = screen.get_rect().center
+user4 = pygame.image.load("character/casual_(sad) 2.png")
+user4 = pygame.transform.smoothscale(user4, (400, 533))
+user4_rect = user4.get_rect()
+user4_rect.center = screen.get_rect().center
+user5 = pygame.image.load("character/casual_(smile).png")
+user5 = pygame.transform.smoothscale(user5, (400, 533))
+user5_rect = user5.get_rect()
+user5_rect.center = screen.get_rect().center
+boss = pygame.image.load("character/boss 2.png")
+boss = pygame.transform.smoothscale(boss, (400, 533))
+boss_rect = boss.get_rect()
+boss_rect.center = screen.get_rect().center
 
-# Scene 1 Images
-dog = pygame.image.load("dog.JPG")
-dog = pygame.transform.smoothscale(dog, (500,300))
-dog = pygame.transform.rotate(dog, -90)
-
-test2 = pygame.image.load("other.png")
-test2 = pygame.transform.smoothscale(test2, (350, 250))
-
+# Objects
 money = pygame.image.load("money.png")
 money = pygame.transform.smoothscale(money, (100,100))
 #---------------------------------------
 # ----------- Fonts and Text -----------
 # Fonts  
-fonttitle1 = pygame.font.SysFont("freesans",70,bold=True)
+font1 = pygame.font.SysFont("freesans",70,bold=True)
 font2 = pygame.font.SysFont("freesans",50,bold=True)
 font3 = pygame.font.SysFont("freesans",30,bold=True)
 font4 = pygame.font.SysFont("freesans",20,bold=True)
 font5 = pygame.font.SysFont("freesans",20,bold=True,italic=True)
 #---------------------------------------
 # Text (Starting Page)
-title1 = fonttitle1.render("<insert title>", True, (BLACK))
+title1 = font1.render("Building My Computer", True, (BLACK))
+title1_rect = title1.get_rect()
+title1_rect.center = screen.get_rect().center
+title1_x = title1.get_rect(center=(display_width/2,150))
 header1 = font2.render("START", True, (BLACK))
 header2 = font2.render("HELP", True, (BLACK))
 #---------------------------------------
 # Text (Help Page) 
 header3 = font2.render("About the Game", True, (WHITE))
+header3_rect = header3.get_rect()
+header3_rect.center = screen.get_rect().center
+header3_x = header3.get_rect(center=(display_width/2,120))
+
 text1 = font4.render("You are planning to build your own computer! For many months,", True, (WHITE))
 text1_1 = font4.render("you have been saving up your money for this day. You decided", True, (WHITE))
 text1_2 = font4.render("to buy the hardware components after your job since today was", True, (WHITE))
 text1_3 = font4.render("payday(You gotta have that extra money ;)).", True, (WHITE))
 text1_4 = font4.render("Use \"Q\" to continue through the dialogue.", True, (WHITE))
+text1_4_rect = text1_4.get_rect()
+text1_4_rect.center = screen.get_rect().center
+text1_4_x = text1_4.get_rect(center=(display_width/2,300))
 returntext = font3.render("Return Home", True, (WHITE)) 
 
-header3_1 = font2.render("Word of Advice", True, (WHITE))
-text2 = font4.render("<insert title> is a decision-based game, where your choices will", True, (WHITE))
-text2_1 = font4.render("reflect your outcome result. Spend your money and choose your", True, (WHITE))
-text2_2 = font4.render("choices wisely. You never know when you will go over your budget...", True, (WHITE))
+header3_1 = font2.render("Keep in Mind...", True, (WHITE))
+header3_1_rect = header3_1.get_rect()
+header3_1_rect.center = screen.get_rect().center
+header3_1_x = header3_1.get_rect(center=(display_width/2,350))
+text2 = font4.render("In Buying My Computer, your choices will reflect your outcome", True, (WHITE))
+text2_1 = font4.render("result. Spend your money and choose your choices wisely.", True, (WHITE))
+text2_2 = font4.render("You never know, you can go over your budget... (*._.)", True, (WHITE))
 #---------------------------------------
 # Text Titles
 usertext = font3.render("User", True, (WHITE))
 usertext_rect = usertext.get_rect()
-#usertext_x = screen.get_width() / 2 - usertext_rect.width / 2
-
-usertext_x = usertext.get_rect(center=(display_width/2,440))
+usertext_rect.center = screen.get_rect().center
+usertext_x = usertext.get_rect(center=(display_width/2,440)) 
 
 bosstext = font3.render("Boss", True, (WHITE))
 bosstext_rect = bosstext.get_rect()
-bosstext_x = screen.get_width() / 2 - bosstext_rect.width / 2
+bosstext_rect.center = screen.get_rect().center
+bosstext_x = bosstext.get_rect(center=(display_width/2,440))
 
 # Reminder
 remind_text = font5.render("Please click the screen before proceeding to avoid errors.", True, (WHITE))
 remind_text_centre = remind_text.get_rect(center=(display_width/2,575))
+
+# Game Over
+gameover_text = font1.render("GAME OVER :(", True, (WHITE))
+gameover_text_rect = gameover_text.get_rect()
+gameover_text_rect.center = screen.get_rect().center
+gameover_text_x = gameover_text.get_rect(center=(display_width/2,display_height/2)) 
+
+# Win
+win_text = font1.render("Congrats!", True, (WHITE))
+win_text_rect = win_text.get_rect()
+win_text_rect.center = screen.get_rect().center
+win_text_x = win_text.get_rect(center=(display_width/2,display_height/2))
+win_text1 = font4.render("You were able to make your computer without going over :)", True, (WHITE))
+win_text1_rect = win_text1.get_rect()
+win_text1_rect.center = screen.get_rect().center
+win_text1_x = win_text1.get_rect(center=(display_width/2,350))
+
 #---------------------------------------
 # Text Dialogue (Scene 1)
 dialogue1_1 = font4.render("\"Ahhh. Today is payday! I will finally have enough money to", True, (WHITE))
@@ -218,7 +263,7 @@ gpu_option1_2 = font4.render("Sapphire Radeon RX 5700 XT 8GB", True, (WHITE))
 gpu_option1_2cost = font4.render("COST - $573.62", True, (WHITE))
 
 # GPU Choices (Intel Path)
-dialogue5_1 = font4.render("\"Ahh. I need to get a CPU cooler. I'm going to get the one that", True, (WHITE))
+dialogue5_1 = font4.render("\"I need to get a CPU cooler. I'm going to get the one that", True, (WHITE))
 dialogue5_2 = font4.render("costs $39.99. Now for the cost of the PSU, Case, Keyboard,", True, (WHITE))
 dialogue5_3 = font4.render("Mouse, Monitor, Operating System, Hard-Drive Disk,", True, (WHITE))
 dialogue5_4 = font4.render("and CPU Cooler is $1180.75. Now let's choose the GPU.\"", True, (WHITE))
@@ -293,6 +338,7 @@ show_textopt2 = 1
 
 #Loop until the user clicks the close button.
 done = False
+gameover = False
  
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
@@ -323,7 +369,7 @@ while not done:
 
       # Input images and/or text
       
-      screen.blit(title1,(100,100))
+      screen.blit(title1,title1_x)
 
       # Drawing Button
       pygame.draw.rect(screen, RED, [startbutton_x, startbutton_y, startbutton_width, startbutton_height])
@@ -348,17 +394,17 @@ while not done:
       pygame.draw.rect(screen, BLACK,[helpbox_x, helpbox_y, helpbox_width, helpbox_height])
 
       # Input images and/or text
-      screen.blit(header3,(225,100))
-      screen.blit(text1,(105,150))
-      screen.blit(text1_1,(105,175))
-      screen.blit(text1_2,(105,200))
-      screen.blit(text1_3,(105,225))
-      screen.blit(text1_4,(105,275))
+      screen.blit(header3, header3_x)
+      screen.blit(text1,(90,150))
+      screen.blit(text1_1,(90,175))
+      screen.blit(text1_2,(90,200))
+      screen.blit(text1_3,(90,225))
+      screen.blit(text1_4,text1_4_x)
 
-      screen.blit(header3_1,(225,325))
-      screen.blit(text2,(105,375))
-      screen.blit(text2_1,(105,400))
-      screen.blit(text2_2,(105,425))
+      screen.blit(header3_1,header3_1_x)
+      screen.blit(text2,(90,375))
+      screen.blit(text2_1,(90,400))
+      screen.blit(text2_2,(90,425))
 
       # Draw Button
       pygame.draw.rect(screen, SLATE_GREY, [returnbutton_x, returnbutton_y, returnbutton_width, returnbutton_height])
@@ -372,32 +418,46 @@ while not done:
     elif scene == 2:
       # Fill background
       screen.blit(job1,(0,0))
-
-      # Input images
-      dog_rect = dog.get_rect()
-      dog_rect.center = screen.get_rect().center
-      screen.blit(dog,dog_rect)
-
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
       
       # Show dialogue
       if show_text == 1:
+        # Input images
+        screen.blit(user1,user1_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue1_1,(110,460))
-        screen.blit(dialogue1_2,(110,485)) 
+        screen.blit(dialogue1_2,(120,485)) 
       elif show_text == 2:
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(dialogue1_3,dialogue1_3_centre)
       elif show_text == 3:
+        # Input images
+        screen.blit(user2,user2_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext,(355,425))
         screen.blit(dialogue1_4,(110,460))
       elif show_text == 4:
-        screen.blit(bosstext, [bosstext_x, 425]) 
+        # Input images
+        screen.blit(boss,boss_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
+        screen.blit(bosstext, bosstext_x)
         screen.blit(dialogue2_1,(110,460))
-        screen.blit(dialogue2_2,(110,485))
+        screen.blit(dialogue2_2,(120,485))
       
       # Provide options
       else:
+        # Input images
+        screen.blit(boss,boss_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(option1,(120,470))
         pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
@@ -415,13 +475,14 @@ while not done:
     elif scene == 3:
       # Fill background
       screen.blit(job2,(0,0))
-      
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
 
       if show_textopt1 == 5:
-        # Input images and/or text
-        screen.blit(bosstext, [bosstext_x, 425])
+        # Input images
+        screen.blit(boss,boss_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
+        screen.blit(bosstext, bosstext_x)
         screen.blit(optdialogue1,(110,460))
         screen.blit(optdialogue1_1,(275,485))
         screen.blit(remind_text,remind_text_centre)
@@ -430,6 +491,8 @@ while not done:
         
 
       elif show_textopt1 >= 6:
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
         # Draw Button (with Text)
         pygame.draw.rect(screen, SLATE_GREY, [nextscene1_x, nextscene1_y, nextscene1_width, nextscene1_height])
         screen.blit(banktext,(240,495))
@@ -443,18 +506,21 @@ while not done:
     elif scene == 4:
       # Fill background
       screen.fill(BLUE_GREY)
-      
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
 
       if show_textopt2 == 5:
-        # Input images and/or text
-        screen.blit(bosstext, [bosstext_x, 425])
+        # Input images
+        screen.blit(boss,boss_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
+        screen.blit(bosstext, bosstext_x)
         screen.blit(optdialogue2,(110,460))
         screen.blit(optdialogue2_1,(275,485))
         screen.blit(remind_text,remind_text_centre)
 
       elif show_textopt2 >= 6:
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
         # Draw Button (with Text)
         pygame.draw.rect(screen, SLATE_GREY, [nextscene1_x, nextscene1_y, nextscene1_width, nextscene1_height])
         screen.blit(banktext,(240,495))
@@ -468,50 +534,63 @@ while not done:
     elif scene == 5:
       # Fill background
       screen.blit(bank,(0,0))
-
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
       
       # Show dialogue
       if show_textopt1 == 7:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue3_1,(110,460))
-        screen.blit(dialogue3_2,(110,480)) 
-      if show_textopt1 == 8: 
+        screen.blit(dialogue3_2,(120,480)) 
+      if show_textopt1 == 8:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(money_amt1,money_amt1_centre)
       elif show_textopt1 == 9:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue3_3,(110,460))
       
       # User at Hardware Store 
       elif show_textopt1 == 10:
         screen.blit(cpustore,(0,0))
-        # Text Box
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
         pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-        # Show dialogue
+        # Dialogue
         screen.blit(dialogue4,dialogue4centre)
       elif show_textopt1 == 11:
         # Background image
         screen.blit(cpustore,(0,0))
-
-        # Text Box
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
         pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-        # Show dialogue
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue4_1,(110,460))
-        screen.blit(dialogue4_2,(110,485))
-        screen.blit(dialogue4_3,(110,510))
-        screen.blit(dialogue4_4,(110,535))
+        screen.blit(dialogue4_2,(120,485))
+        screen.blit(dialogue4_3,(120,510))
+        screen.blit(dialogue4_4,(120,535))
       elif show_textopt1 == 12:
         # Background image
         screen.blit(cpustore,(0,0))
-        
-        # Text Box
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
         pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-        # Show dialogue
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue4_5,(110,460))
         screen.blit(remind_text,remind_text_centre)
@@ -520,10 +599,10 @@ while not done:
       elif show_textopt1 >= 13:
         # Background image
         screen.blit(cpustore,(0,0))
-        
-        # Text Box
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
         pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-        
         # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(cpu_option1,(120,470))
@@ -545,43 +624,63 @@ while not done:
       # Fill background
       screen.blit(bank,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-      # Input images
-      
-      
       # Show dialogue
       if show_textopt2 == 7:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue3_1,(110,460))
-        screen.blit(dialogue3_2,(110,480)) 
+        screen.blit(dialogue3_2,(120,480)) 
       elif show_textopt2 == 8: 
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(money_amt2,money_amt2_centre)
       elif show_textopt2 == 9:
+        # Input images
+        screen.blit(user4,user4_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue3_4,(110,460))
-        screen.blit(dialogue3_5,(110,485))
-        screen.blit(dialogue3_6,(110,510))
+        screen.blit(dialogue3_5,(120,485))
+        screen.blit(dialogue3_6,(120,510))
 
-
-      # GAME OVER
-
+      # Game Over
+      if scene == 6 and show_textopt2 == 9:
+        screen.fill(BLACK)
+        screen.blit(gameover_text,gameover_text_x)
+        gameover = True
+      elif scene == 6 and show_textopt2 == 10:
+        break
 #------------------------------------------------------    
     # AMD CPU (Picking GPU)
     elif scene == 7:
       # Fill background
       screen.blit(gpustore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 14:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue5,(110,460))
         screen.blit(remind_text,remind_text_centre)
 
       elif show_textopt1 >= 15:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(gpu_option1_1,(120,470))
         screen.blit(gpu_option1_1cost,(525,470))
@@ -602,14 +701,21 @@ while not done:
       # Fill background
       screen.blit(ramstore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 16:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue6,(110,460))
         screen.blit(remind_text,remind_text_centre)
       elif show_textopt1 >= 17:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(ram_option1_1,(120,470))
         screen.blit(ram_option1_1cost,(525,470))
@@ -630,15 +736,22 @@ while not done:
       # Fill background
       screen.blit(mbstore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 18:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue7,(110,460))
         screen.blit(remind_text,remind_text_centre)
       
       elif show_textopt1 >= 19:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(motherboard_option1_1,(120,470))
         screen.blit(motherboard_option1_1cost,(525,470))
@@ -659,45 +772,72 @@ while not done:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 20:
+        # Input images
+        screen.blit(user4,user4_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8,(110,460))
         screen.blit(route1,(475,460))
         screen.blit(dialogue8_3,(120,485))
         screen.blit(dialogue8_4,(120,510))
       
+      if scene == 10 and show_textopt1 == 21:
+        screen.fill(BLACK)
+        screen.blit(gameover_text,gameover_text_x)
+        gameover = True
+      elif scene == 10 and show_textopt1 == 22:
+        break
+
 
     # AMD CPU -- NVIDIA GPU -- Corsair RAM -- MSI B550-A MOTHERBOARD (FINAL)
     elif scene == 11:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 20:
+        # Input images
+        screen.blit(user5,user5_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8,(110,460))
         screen.blit(route2,(475,460))
         screen.blit(dialogue8_2,(120,485))
+      
+      # Win
+      if scene == 11 and show_textopt1 == 21:
+        screen.fill(BLUE_GREY)
+        screen.blit(win_text,win_text_x)
+        screen.blit(win_text1,win_text1_x)
+      elif scene == 11 and show_textopt1 == 22:
+        break
+
 
     # AMD CPU -- NVIDIA GPU -- G.Skill RAM (PICKING MOTHERBOARD)
     elif scene == 12:
       # Fill background
-      screen.fill(WHITE)
-
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+      screen.blit(mbstore,(0,0))
 
       if show_textopt1 == 18:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue7,(110,460))
         screen.blit(remind_text,remind_text_centre)
 
       elif show_textopt1 >= 19:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(motherboard_option1_4,(120,470))
         screen.blit(motherboard_option1_4cost,(525,470))
@@ -718,29 +858,49 @@ while not done:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 20:
+        # Input images
+        screen.blit(user4,user4_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8,(110,460))
         screen.blit(route3,(475,460))
         screen.blit(dialogue8_3,(120,485))
         screen.blit(dialogue8_4,(120,510))
+      
+      # Game Over
+      if scene == 13 and show_textopt1 == 21:
+        screen.fill(BLACK)
+        screen.blit(gameover_text,gameover_text_x)
+        gameover = True
+      elif scene == 13 and show_textopt1 == 22:
+        break
 
     # AMD CPU -- NVIDIA GPU -- G.Skill RAM -- MSI MAG MOTHERBOARD (FINAL) 
     elif scene == 14:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 20:
+        # Input images
+        screen.blit(user5,user5_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8,(110,460))
         screen.blit(route4,(475,460))
         screen.blit(dialogue8_2,(120,485))
+        
+      # Win
+      if scene == 14 and  show_textopt1 == 21:
+        screen.fill(BLUE_GREY)
+        screen.blit(win_text,win_text_x)
+        screen.blit(win_text1,win_text1_x)
+      elif scene == 14 and show_textopt1 == 22:
+        break
 
 # ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯
     # AMD CPU -- SAPPHIRE GPU (PICKING RAM)
@@ -748,14 +908,21 @@ while not done:
       # Fill background
       screen.blit(ramstore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 16:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue6,(110,460))
         screen.blit(remind_text,remind_text_centre)
       elif show_textopt1 >= 17:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(ram_option1_1,(120,470))
         screen.blit(ram_option1_1cost,(525,470))
@@ -774,17 +941,24 @@ while not done:
     # AMD CPU -- SAPPHIRE GPU -- Corsair RAM (Picking Motherboard)
     elif scene == 16:
       # Fill background
-      screen.fill(WHITE)
-
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+      screen.blit(mbstore,(0,0))
 
       if show_textopt1 == 18:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue7,(110,460))
         screen.blit(remind_text,remind_text_centre)
 
       elif show_textopt1 >= 19:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(motherboard_option1_3,(120,470))
         screen.blit(motherboard_option1_3cost,(525,470))
@@ -805,44 +979,71 @@ while not done:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 20:
+        # Input images
+        screen.blit(user4,user4_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8,(110,460))
         screen.blit(route5,(475,460))
         screen.blit(dialogue8_3,(120,485))
         screen.blit(dialogue8_4,(120,510))
+      
+      # Game Over 
+      if scene == 17 and show_textopt1 == 21:
+        screen.fill(BLACK)
+        screen.blit(gameover_text,gameover_text_x)
+        gameover = True
+      elif scene == 17 and show_textopt1 == 22:
+        break
     
     # AMD CPU -- SAPPHIRE GPU -- Corsair RAM -- GIGABYTE X570 MOTHERBOARD (FINAL)
     elif scene == 18:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 20:
+        # Input images
+        screen.blit(user5,user5_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8,(110,460))
         screen.blit(route6,(475,460))
         screen.blit(dialogue8_2,(120,485))
+      
+      # Win
+      if scene == 18 and  show_textopt1 == 21:
+        screen.fill(BLUE_GREY)
+        screen.blit(win_text,win_text_x)
+        screen.blit(win_text1,win_text1_x)
+      elif scene == 18 and show_textopt1 == 22:
+        break
 
     # AMD CPU -- SAPPHIRE GPU -- G.Skill Trident RAM (Picking Motherboard)
     elif scene == 19:
       # Fill background
-      screen.fill(WHITE)
-
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+      screen.blit(mbstore,(0,0))
 
       if show_textopt1 == 18:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue7,(110,460))
         screen.blit(remind_text,remind_text_centre)
 
       elif show_textopt1 >= 19:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button 
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(motherboard_option1_2,(120,470))
         screen.blit(motherboard_option1_2cost,(525,470))
@@ -863,29 +1064,49 @@ while not done:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 20:
+        # Input images
+        screen.blit(user5,user5_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8,(110,460))
         screen.blit(route7,(475,460))
         screen.blit(dialogue8_2,(120,485))
+      
+      # Win
+      if scene == 20 and  show_textopt1 == 21:
+        screen.fill(BLUE_GREY)
+        screen.blit(win_text,win_text_x)
+        screen.blit(win_text1,win_text1_x)
+      elif scene == 20 and show_textopt1 == 22:
+        break
       
     # AMD CPU -- SAPPHIRE GPU -- G.Skill Trident RAM -- ASUS ROG CROSSHAIR MOTHEROARD (FINAL) 
     elif scene == 21:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt1 == 20:
+        # Input images
+        screen.blit(user4,user4_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8,(110,460))
         screen.blit(route8,(475,460))
         screen.blit(dialogue8_3,(120,485))
         screen.blit(dialogue8_4,(120,510))
+      
+      # Game Over
+      if scene == 21 and show_textopt1 == 21:
+        screen.fill(BLACK)
+        screen.blit(gameover_text,gameover_text_x)
+        gameover = True
+      elif scene == 21 and show_textopt1 == 22:
+        break
 
 #------------------------------------------------------ 
     # INTEL CPU (Picking GPU)
@@ -893,17 +1114,24 @@ while not done:
       # Fill background
       screen.blit(gpustore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt2 == 14:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue5_1,(110,460))
-        screen.blit(dialogue5_2,(110,485))
-        screen.blit(dialogue5_3,(110,510))
-        screen.blit(dialogue5_4,(110,535))
+        screen.blit(dialogue5_2,(120,485))
+        screen.blit(dialogue5_3,(120,510))
+        screen.blit(dialogue5_4,(120,535))
         screen.blit(remind_text,remind_text_centre)
       elif show_textopt2 >= 15:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(gpu_option2_1,(120,470))
         screen.blit(gpu_option2_1cost,(525,470))
@@ -924,14 +1152,21 @@ while not done:
       # Fill background
       screen.blit(ramstore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt2 == 16:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue6,(110,460))
         screen.blit(remind_text,remind_text_centre)
       elif show_textopt2 >= 17:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(ram_option1_1,(120,470))
         screen.blit(ram_option1_1cost,(525,470))
@@ -952,15 +1187,21 @@ while not done:
       # Fill background
       screen.blit(mbstore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt2 == 18:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue7,(110,460))
-        screen.blit(remind_text,remind_text_centre)
-      
+        screen.blit(remind_text,remind_text_centre) 
       elif show_textopt2 >= 19:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(motherboard_option2_1,(120,470))
         screen.blit(motherboard_option2_1cost,(525,470))
@@ -981,44 +1222,70 @@ while not done:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-      if show_textopt1 == 20:
+      if show_textopt2 == 20:
+        # Input images
+        screen.blit(user5,user5_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8_1,(110,460))
         screen.blit(route9,(475,460))
         screen.blit(dialogue8_2,(120,485))
+      
+      # Win
+      if scene == 25 and  show_textopt2 == 21:
+        screen.fill(BLUE_GREY)
+        screen.blit(win_text,win_text_x)
+        screen.blit(win_text1,win_text1_x)
+      elif scene == 25 and show_textopt2 == 22:
+        break
 
     # INTEL CPU -- MSI GPU -- Corsair RAM -- MSI MEG MOTHERBOARD (FINAL)
     elif scene == 26:
       # Fill background
       screen.blit(store,(0,0))
-
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-      if show_textopt1 == 20:
+      if show_textopt2 == 20:
+        # Input images
+        screen.blit(user4,user4_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8_1,(110,460))
         screen.blit(route10,(475,460))
         screen.blit(dialogue8_3,(120,485))
         screen.blit(dialogue8_4,(120,510))
+      
+      # Game Over
+      if scene == 26 and show_textopt2 == 21:
+        screen.fill(BLACK)
+        screen.blit(gameover_text,gameover_text_x)
+        gameover = True
+      elif scene == 26 and show_textopt2 == 22:
+        break
     
     # INTEL CPU -- MSI GPU -- G.Skill RAM (Picking Motherboard)
     elif scene == 27:
       # Fill background
       screen.blit(mbstore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt2 == 18:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue7,(110,460))
         screen.blit(remind_text,remind_text_centre)
       
       elif show_textopt2 >= 19:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(motherboard_option2_3,(120,470))
         screen.blit(motherboard_option2_3cost,(525,470))
@@ -1039,44 +1306,70 @@ while not done:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-      if show_textopt1 == 20:
+      if show_textopt2 == 20:
+        # Input images
+        screen.blit(user4,user4_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8_1,(110,460))
         screen.blit(route11,(475,460))
         screen.blit(dialogue8_3,(120,485))
         screen.blit(dialogue8_4,(120,510))
       
-
+      # Game Over
+      if scene == 28 and show_textopt2 == 21:
+        screen.fill(BLACK)
+        screen.blit(gameover_text,gameover_text_x)
+        gameover = True
+      elif scene == 28 and show_textopt2 == 22:
+        break
+      
     # INTEL CPU -- MSI GPU -- Corsair RAM -- MSI MPG MOTHERBOARD (FINAL)
     elif scene == 29:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-      if show_textopt1 == 20:
+      if show_textopt2 == 20:
+        # Input images
+        screen.blit(user5,user5_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8_1,(110,460))
         screen.blit(route12,(475,460))
         screen.blit(dialogue8_2,(120,485))
+      
+      # Win
+      if scene == 29 and  show_textopt2 == 21:
+        screen.fill(BLUE_GREY)
+        screen.blit(win_text,win_text_x)
+        screen.blit(win_text1,win_text1_x)
+      elif scene == 29 and show_textopt2 == 22:
+        break
     
     # INTEL CPU -- EVGA GPU (PICKING RAM)
     elif scene == 30:
       # Fill background
       screen.blit(ramstore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt2 == 16:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue6,(110,460))
         screen.blit(remind_text,remind_text_centre)
       elif show_textopt2 >= 17:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(ram_option1_1,(120,470))
         screen.blit(ram_option1_1cost,(525,470))
@@ -1097,15 +1390,22 @@ while not done:
       # Fill background
       screen.blit(mbstore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt2 == 18:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue7,(110,460))
         screen.blit(remind_text,remind_text_centre)
       
       elif show_textopt2 >= 19:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(motherboard_option2_4,(120,470))
         screen.blit(motherboard_option2_4cost,(525,470))
@@ -1126,44 +1426,71 @@ while not done:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-      if show_textopt1 == 20:
+      if show_textopt2 == 20:
+        # Input images
+        screen.blit(user5,user5_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8_1,(110,460))
         screen.blit(route13,(475,460))
         screen.blit(dialogue8_2,(120,485))
+      
+      # Win
+      if scene == 32 and  show_textopt2 == 21:
+        screen.fill(BLUE_GREY)
+        screen.blit(win_text,win_text_x)
+        screen.blit(win_text1,win_text1_x)
+      elif scene == 32 and show_textopt2 == 22:
+        break
 
     # INTEL CPU -- EVGA GPU -- Corsair RAM -- MSI MEG MOTHERBOARD (FINAL) 
     elif scene == 33:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-      if show_textopt1 == 20:
+      if show_textopt2 == 20:
+        # Input images
+        screen.blit(user4,user4_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8_1,(110,460))
         screen.blit(route14,(475,460))
         screen.blit(dialogue8_3,(120,485))
         screen.blit(dialogue8_4,(120,510))
+      
+      # Game Over
+      if scene == 33 and show_textopt2 == 21:
+        screen.fill(BLACK)
+        screen.blit(gameover_text,gameover_text_x)
+        gameover = True
+      elif scene == 33 and show_textopt2 == 22:
+        break
     
     # INTEL CPU -- EVGA GPU -- G.Skill RAM (Picking Motherboard)
     elif scene == 34:
       # Fill background
       screen.blit(mbstore,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
       if show_textopt2 == 18:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue7,(110,460))
         screen.blit(remind_text,remind_text_centre)
       
       elif show_textopt2 >= 19:
+        # Input images
+        screen.blit(user3,user3_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(motherboard_option2_4,(120,470))
         screen.blit(motherboard_option2_4cost,(525,470))
@@ -1184,14 +1511,24 @@ while not done:
       # Fill background
       screen.blit(store,(0,0))
 
-      # Text Box
-      pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
-
-      if show_textopt1 == 20:
+      if show_textopt2 == 20:
+        # Input images
+        screen.blit(user5,user5_rect)
+        # Text box
+        pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Dialogue
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8_1,(110,460))
         screen.blit(route15,(475,460))
         screen.blit(dialogue8_2,(120,485))
+      
+      # Win
+      if scene == 35 and  show_textopt2 == 21:
+        screen.fill(BLUE_GREY)
+        screen.blit(win_text,win_text_x)
+        screen.blit(win_text1,win_text1_x)
+      elif scene == 35 and show_textopt2 == 22:
+        break
 
     # INTEL CPU -- EVGA GPU -- G.Skill RAM -- GIGABYTE Z490 MOTHERBOARD (FINAL) 
     elif scene == 36:
@@ -1201,12 +1538,20 @@ while not done:
       # Text Box
       pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
 
-      if show_textopt1 == 20:
+      if show_textopt2 == 20:
         screen.blit(usertext, usertext_x)
         screen.blit(dialogue8_1,(110,460))
         screen.blit(route16,(475,460))
         screen.blit(dialogue8_3,(120,485))
         screen.blit(dialogue8_4,(120,510)) 
+      
+      # Game Over
+      if scene == 36 and show_textopt2 == 21:
+        screen.fill(BLACK)
+        screen.blit(gameover_text,gameover_text_x)
+        gameover = True
+      elif scene == 36 and show_textopt2 == 22:
+        break
 
 
 # ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯      
