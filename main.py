@@ -1,5 +1,12 @@
-""" 
-A basic pygame template
+"""
+----------------------------------------------------------
+Name:    main.py
+Purpose: Produce a python program demonstrating your understanding of a variety of topics in the course.
+
+Author:  Hosey.K
+
+Created: date in 07/04/2021
+----------------------------------------------------------
 """
 # ⋯⋯⋯⋯⋯⋯⋯⋯ 
 import pygame
@@ -65,15 +72,8 @@ nextscene1_y = 480
 nextscene1_width = 360
 nextscene1_height = 75
 
-# Bring To Next Scene (Second Button)
-nextscene2_x = 220
-nextscene2_y = 480
-nextscene2_width = 360
-nextscene2_height = 75
-
 button_pressed = False
 mouse_click_position = [0,0]
-q_click_position = [0,0]
 #---------------------------------------
 # --------------- Boxes ---------------
 # Help Box 
@@ -91,12 +91,15 @@ textbox_height = 175
 # ------------- Background -------------
 store = pygame.image.load("backgrounds/canada-computer.jpeg")
 store = pygame.transform.smoothscale(store,  (800, 600))
+
 job1 = pygame.image.load("backgrounds/scene-1.jpeg")
 job1 = pygame.transform.smoothscale(job1, (800, 600))
 job2 = pygame.image.load("backgrounds/scene-1.1.jpeg")
 job2 = pygame.transform.smoothscale(job2, (800, 600))
+
 bank = pygame.image.load("backgrounds/RBC-atm.jpeg")
 bank = pygame.transform.smoothscale(bank,  (800, 600))
+
 cpustore = pygame.image.load("backgrounds/canada-computer8.jpeg")
 cpustore = pygame.transform.smoothscale(cpustore,  (800, 600))
 gpustore = pygame.image.load("backgrounds/canada-computer9.jpeg")
@@ -112,30 +115,31 @@ user1 = pygame.image.load("character/Work 2.png")
 user1 = pygame.transform.smoothscale(user1, (400, 533))
 user1_rect = user1.get_rect()
 user1_rect.center = screen.get_rect().center
+
 user2 = pygame.image.load("character/Work_(smile) 2.png")
 user2 = pygame.transform.smoothscale(user2, (400, 533))
 user2_rect = user2.get_rect()
 user2_rect.center = screen.get_rect().center
+
 user3 = pygame.image.load("character/casual 2.png")
 user3 = pygame.transform.smoothscale(user3, (400, 533))
 user3_rect = user3.get_rect()
 user3_rect.center = screen.get_rect().center
+
 user4 = pygame.image.load("character/casual_(sad) 2.png")
 user4 = pygame.transform.smoothscale(user4, (400, 533))
 user4_rect = user4.get_rect()
 user4_rect.center = screen.get_rect().center
+
 user5 = pygame.image.load("character/casual_(smile).png")
 user5 = pygame.transform.smoothscale(user5, (400, 533))
 user5_rect = user5.get_rect()
 user5_rect.center = screen.get_rect().center
+
 boss = pygame.image.load("character/boss 2.png")
 boss = pygame.transform.smoothscale(boss, (400, 533))
 boss_rect = boss.get_rect()
 boss_rect.center = screen.get_rect().center
-
-# Objects
-money = pygame.image.load("money.png")
-money = pygame.transform.smoothscale(money, (100,100))
 #---------------------------------------
 # ----------- Fonts and Text -----------
 # Fonts  
@@ -162,11 +166,11 @@ header3_x = header3.get_rect(center=(display_width/2,120))
 text1 = font4.render("You are planning to build your own computer! For many months,", True, (WHITE))
 text1_1 = font4.render("you have been saving up your money for this day. You decided", True, (WHITE))
 text1_2 = font4.render("to buy the hardware components after your job since today was", True, (WHITE))
-text1_3 = font4.render("payday(You gotta have that extra money ;)).", True, (WHITE))
+text1_3 = font4.render("payday ( You gotta have that extra money ;) ).", True, (WHITE))
 text1_4 = font4.render("Use \"Q\" to continue through the dialogue.", True, (WHITE))
 text1_4_rect = text1_4.get_rect()
 text1_4_rect.center = screen.get_rect().center
-text1_4_x = text1_4.get_rect(center=(display_width/2,300))
+text1_4_x = text1_4.get_rect(center=(display_width/2,290))
 returntext = font3.render("Return Home", True, (WHITE)) 
 
 header3_1 = font2.render("Keep in Mind...", True, (WHITE))
@@ -176,6 +180,14 @@ header3_1_x = header3_1.get_rect(center=(display_width/2,350))
 text2 = font4.render("In Buying My Computer, your choices will reflect your outcome", True, (WHITE))
 text2_1 = font4.render("result. Spend your money and choose your choices wisely.", True, (WHITE))
 text2_2 = font4.render("You never know, you can go over your budget... (*._.)", True, (WHITE))
+text2_3 = font4.render("You will NOT know how much money you have left until", True, (WHITE))
+text2_3_rect = text2_3.get_rect()
+text2_3_rect.center = screen.get_rect().center
+text2_3_x = text2_3.get_rect(center=(display_width/2,475))
+text2_4 = font4.render("the VERY END (cash register). (∙ ε ∙ ` *)…", True, (WHITE))
+text2_4_rect = text2_4.get_rect()
+text2_4_rect.center = screen.get_rect().center
+text2_4_x = text2_4.get_rect(center=(display_width/2,500))
 #---------------------------------------
 # Text Titles
 usertext = font3.render("User", True, (WHITE))
@@ -246,7 +258,7 @@ dialogue4 = font5.render("USER GOES TO HARDWARE STORE", True, (WHITE))
 dialogue4centre = dialogue4.get_rect(center=(display_width/2,470))
 dialogue4_1 = font4.render("\"Let's see... I already planned out my SSDs, PSU, Case,", True, (WHITE))
 dialogue4_2 = font4.render("Keyboard, Mouse, Monitor and Operating System. The cost", True, (WHITE))
-dialogue4_3 = font4.render("for those components were $1159.85. Now I just need the", True, (WHITE))
+dialogue4_3 = font4.render("for those components were $1140.76. Now I just need the", True, (WHITE))
 dialogue4_4 = font4.render("CPU, GPU, RAM, and Motherboard.\"", True, (WHITE))
 dialogue4_5 = font4.render("\"I guess I'll start off with the CPU first.\"", True, (WHITE))
 
@@ -352,28 +364,26 @@ while not done:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
                 print("Continue")
-                q_click_position = pygame.key.get_pressed()
                 show_text += 1
                 show_textopt1 += 1
                 show_textopt2 += 1
         elif event.type == pygame.MOUSEBUTTONDOWN:
           print("User pressed a mouse button.")
           mouse_click_position = pygame.mouse.get_pos()
-    print("scene", scene)
-    print("show_textopt1", show_textopt1)
-    print("show_textopt2", show_textopt2)
+# ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯
     # Start Page 
     if scene == 0:
       # Fill background
       screen.fill(LIGHT_BEIGE)
 
-      # Input images and/or text
-      
+      # Input text
       screen.blit(title1,title1_x)
 
       # Drawing Button
-      pygame.draw.rect(screen, RED, [startbutton_x, startbutton_y, startbutton_width, startbutton_height])
-      pygame.draw.rect(screen, GREEN, [helpbutton_x, helpbutton_y, helpbutton_width, helpbutton_height])
+      pygame.draw.rect(screen, DARK_GREEN, [startbutton_x, startbutton_y, startbutton_width, startbutton_height])
+      screen.blit(header1,(497,325))
+      pygame.draw.rect(screen, SLATE_GREY, [helpbutton_x, helpbutton_y, helpbutton_width, helpbutton_height])
+      screen.blit(header2,(160,325))
       
       # Checking Button
       if (startbutton_x <= mouse_click_position[0] and mouse_click_position[0] <= startbutton_x + startbutton_width) and (startbutton_y <= mouse_click_position[1] and mouse_click_position[1] <= startbutton_y + startbutton_height):
@@ -381,9 +391,6 @@ while not done:
       elif (helpbutton_x <= mouse_click_position[0] and mouse_click_position[0] <= helpbutton_x + helpbutton_width) and (helpbutton_y <= mouse_click_position[1] and mouse_click_position[1] <= helpbutton_y + helpbutton_height):
           scene = 1
       
-      # Text
-      screen.blit(header1,(500,325))
-      screen.blit(header2,(160,325))
 # ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯
     # Help Page
     elif scene == 1:
@@ -405,6 +412,8 @@ while not done:
       screen.blit(text2,(90,375))
       screen.blit(text2_1,(90,400))
       screen.blit(text2_2,(90,425))
+      screen.blit(text2_3,text2_3_x)
+      screen.blit(text2_4,text2_4_x)
 
       # Draw Button
       pygame.draw.rect(screen, SLATE_GREY, [returnbutton_x, returnbutton_y, returnbutton_width, returnbutton_height])
@@ -458,6 +467,7 @@ while not done:
         screen.blit(boss,boss_rect)
         # Text box
         pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
+        # Draw Button
         pygame.draw.rect(screen, SLATE_GREY, [option1_x, option1_y, option1_width, option1_height])
         screen.blit(option1,(120,470))
         pygame.draw.rect(screen, DARK_GREEN, [option2_x, option2_y, option2_width, option2_height])
@@ -487,9 +497,6 @@ while not done:
         screen.blit(optdialogue1_1,(275,485))
         screen.blit(remind_text,remind_text_centre)
 
-      # BLIT MONEY IMG
-        
-
       elif show_textopt1 >= 6:
         # Text box
         pygame.draw.rect(screen, BLACK,[textbox_x, textbox_y, textbox_width, textbox_height])
@@ -505,7 +512,7 @@ while not done:
     # Option 2
     elif scene == 4:
       # Fill background
-      screen.fill(BLUE_GREY)
+      screen.blit(job2,(0,0))
 
       if show_textopt2 == 5:
         # Input images
@@ -653,11 +660,11 @@ while not done:
         screen.blit(dialogue3_6,(120,510))
 
       # Game Over
-      if scene == 6 and show_textopt2 == 9:
+      if scene == 6 and show_textopt2 == 10:
         screen.fill(BLACK)
         screen.blit(gameover_text,gameover_text_x)
         gameover = True
-      elif scene == 6 and show_textopt2 == 10:
+      elif scene == 6 and show_textopt2 == 11:
         break
 #------------------------------------------------------    
     # AMD CPU (Picking GPU)
@@ -1552,16 +1559,7 @@ while not done:
         gameover = True
       elif scene == 36 and show_textopt2 == 22:
         break
-
-
-# ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯      
-    #else:
-      #screen.fill(BEIGE)
-
-    
-
         
-      
       
     
     # --- Go ahead and update the screen with what we've drawn.
